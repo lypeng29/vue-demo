@@ -1,0 +1,20 @@
+module.exports = {
+	entry:'./src/main.js',
+	output:{
+		path:'./dist',
+		filename:'build.js'
+	},
+	module:{
+		loaders:[
+			{
+				test:/\.js$/,
+				loader:'babel',
+				exclude:/node_modules/
+			}
+		]
+	},
+	babel:{
+		"presets":['es2015','stage-0'],
+		"plugins":['transform-runtime']
+	}
+}
