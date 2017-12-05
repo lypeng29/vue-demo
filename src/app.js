@@ -1,9 +1,11 @@
-import Vue from 'vue';
-import App from './app.vue';
+var template = require('./app.html');
+require('./app.css');
 
-new Vue({
-	el:'body',
-	data:{
-		message:'hello world'
-	}
-})
+module.exports = {
+    template: template,
+    data: function (){
+        return {
+            message: 'hello word!!'
+        };
+    }
+};

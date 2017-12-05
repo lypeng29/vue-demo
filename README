@@ -1,0 +1,22 @@
+
+
+error stack: 'Error: EPERM: operation not permitted, rmdir \'E:\\www\\test\\vue-demo\\node_modules\\fsevents\\node_modules\'',
+error errno: -4048,
+error code: 'EPERM',
+error syscall: 'rmdir',
+error path: 'E:\\www\\test\\vue-demo\\node_modules\\fsevents\\node_modules' }
+error Please try running this command again as root/Administrator.
+
+
+安装webpack出现警告： fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):
+警告如下：
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.0.17: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN vue-loader-demo@1.0.0 No description
+npm WARN vue-loader-demo@1.0.0 No repository field.
+
+原因是因为： fsevent是mac osx系统的，在win或者Linux下使用了 所以会有警告，忽略即可。意思就是你已经安装成功了。
+
+
+
