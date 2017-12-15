@@ -6,7 +6,8 @@ const webpack = require('webpack');
 module.exports = {
     entry: {
         app: './index.js',
-        common: ['vue', 'jquery']
+        vue: 'vue/dist/vue.js',
+        common: ['vue','jquery']
         // print: './src/print.js',
     },
     devtool: 'inline-source-map',
@@ -18,8 +19,8 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),	//传递清空的目录，数组形式
         new HtmlWebpackPlugin({
             title: 'vue-demo',
-            // template: './index.html',
-            // filename: 'index.html',
+            template: './index.html',
+            filename: 'index.html',
             // chunks: ['index', 'common']
         }),
         new webpack.ProvidePlugin({
@@ -61,17 +62,22 @@ module.exports = {
             }              
         ]
     },
-    // resolve: {
-    //     root: [
-    //         path.resolve(__dirname, 'src/lib')
-    //     ],
-    //     extensions: ['.js'],
+    resolve: {
+    //     // root: [
+    //     //     path.resolve(__dirname, 'src/lib')
+    //     // ],
+    //     lib: path.resolve(__dirname, 'src/lib/'),
+    //     // extensions: ['.js'],
     //     alias: {
-    //         'test': 'test.js',
+    //     //     'test': 'test.js',
+    //         'vue': 'vue-2.4.2.js',
     //     }
-    // }, 
+        alias: {
+            'vue': 'vue/dist/vue.js'
+        },
+    }, 
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: './'
     }      
