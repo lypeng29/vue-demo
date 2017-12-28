@@ -1,13 +1,12 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
     entry: {
-        app: './index.js',
-        vue: 'vue/dist/vue.js',
-        common: ['vue','jquery']
+        app: './src/index.js',
+        // common: ['vue','jquery']
         // print: './src/print.js',
     },
     devtool: 'inline-source-map',
@@ -17,15 +16,15 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),	//传递清空的目录，数组形式
-        new HtmlWebpackPlugin({
-            title: 'vue-demo',
-            template: './index.html',
-            filename: 'index.html',
-            // chunks: ['index', 'common']
-        }),
-        new webpack.ProvidePlugin({
-            jQuery: "jquery"
-        }),
+        // new HtmlWebpackPlugin({
+        //     title: 'vue-demo',
+        //     // template: './index.html',
+        //     filename: 'index.html',
+        //     // chunks: ['index', 'common']
+        // }),
+        // new webpack.ProvidePlugin({
+        //     jQuery: "jquery"
+        // }),
         // new webpack.optimize.UglifyJsPlugin(),
         // new ExtractTextWebpackPlugin("style.css", {
         //     allChunks: true
@@ -47,7 +46,14 @@ module.exports = {
                 use: [
                 'html-loader'
                 ]
-            },        
+            }, 
+            {
+                test: /\.vue$/,
+                // exclude: /node_modules/, 
+                use: [
+                'vue-loader'
+                ]
+            },                   
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
@@ -63,22 +69,13 @@ module.exports = {
         ]
     },
     resolve: {
-    //     // root: [
-    //     //     path.resolve(__dirname, 'src/lib')
-    //     // ],
-    //     lib: path.resolve(__dirname, 'src/lib/'),
-    //     // extensions: ['.js'],
-    //     alias: {
-    //     //     'test': 'test.js',
-    //         'vue': 'vue-2.4.2.js',
-    //     }
         alias: {
             'vue': 'vue/dist/vue.js'
-        },
-    }, 
+        }
+    },
     output: {
-        filename: '[name].[hash].js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: './'
-    }      
+    }
 };
