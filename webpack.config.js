@@ -1,27 +1,27 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
     entry: {
-        app: './src/index.js',
+        app: './src/main.js',
         // common: ['vue','jquery']
         // print: './src/print.js',
     },
     devtool: 'inline-source-map',
     devServer: {
-    contentBase: './dist',
-    hot: true
+        contentBase: './dist',
+        hot: true
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),	//传递清空的目录，数组形式
-        // new HtmlWebpackPlugin({
-        //     title: 'vue-demo',
-        //     // template: './index.html',
-        //     filename: 'index.html',
-        //     // chunks: ['index', 'common']
-        // }),
+        new HtmlWebpackPlugin({
+            // title: 'vue-demo',
+            template: './src/index.html',
+            // filename: 'index.html',
+            // chunks: ['index', 'common']
+        }),
         // new webpack.ProvidePlugin({
         //     jQuery: "jquery"
         // }),
@@ -49,11 +49,17 @@ module.exports = {
             }, 
             {
                 test: /\.vue$/,
-                // exclude: /node_modules/, 
                 use: [
                 'vue-loader'
                 ]
-            },                   
+            }, 
+            {
+                test: /\.js$/,
+                exclude: /node_modules/, 
+                use: [
+                'babel-loader'
+                ]
+            },                              
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
