@@ -5,7 +5,7 @@
 			* v-html innerHTML
 			* v-if 移除或者插入
 			* v-show display:none与否
-			* v-model 双向
+			* v-model 双向绑定
 			* v-bind 单向，内存JS影响页面
 		</pre>
 		v-text
@@ -25,7 +25,7 @@
 		v-bind:（v-bind:可以简写为:）
 		<div v-bind:class="isRed?'red':'green'">单个class</div>
 		<div :class="{'red':true,'big':true}">多个class</div>
-		根据成绩匹配颜色<br/>
+		根据成绩匹配颜色123<br/>
 		<ul>
 			<li v-for="stu in stus" :class="{'A':'red','B':'green'}[stu.score]">{{stu.name}}</li>
 		</ul>

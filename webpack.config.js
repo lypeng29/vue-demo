@@ -29,7 +29,7 @@ module.exports = {
         // new ExtractTextWebpackPlugin("style.css", {
         //     allChunks: true
         // })
-        // new webpack.NamedModulesPlugin(),
+        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ],
     module: {
@@ -82,6 +82,6 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: './'
+        publicPath: '/'
     }
 };
