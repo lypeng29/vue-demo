@@ -57,3 +57,32 @@ resolve: {
 运行npm run start后，成功打开localhost:5000，但页面是空的，提示：cannot GET /
 解决：在webpack配置中，output路径错了，应该是publicPath: '/'，而不是'./'
 
+5.template必须只有一个根节点，否则报错如下
+
+> Component template should contain exactly one root element. If you are using v-if on multiple elements, use v-else-if to chain them instead.
+
+错误写法：
+<template>
+	<div>123</div>
+	<div>456</div>
+</template>
+
+正确写法：
+<template>
+	<div>
+		<div>123</div>
+		<div>456</div>
+	</div>
+</template>
+
+6.组件名必须和标签名一致
+template写法：
+<header-vue></header-vue>
+<body-vue></body-vue>
+<footer-vue></footer-vue>
+script写法：标签名：组件对象
+components:{
+	'header-vue':headervue,
+	'body-vue':bodyvue,
+	'footer-vue':footervue,
+}
