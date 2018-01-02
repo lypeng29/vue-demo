@@ -62,27 +62,36 @@ resolve: {
 > Component template should contain exactly one root element. If you are using v-if on multiple elements, use v-else-if to chain them instead.
 
 错误写法：
+```html
 <template>
 	<div>123</div>
 	<div>456</div>
 </template>
+```
 
 正确写法：
+```html
 <template>
 	<div>
 		<div>123</div>
 		<div>456</div>
 	</div>
 </template>
+```
 
 6.组件名必须和标签名一致
 template写法：
+```html
 <header-vue></header-vue>
 <body-vue></body-vue>
 <footer-vue></footer-vue>
+```
+
 script写法：标签名：组件对象
+```javascript
 components:{
 	'header-vue':headervue,
 	'body-vue':bodyvue,
 	'footer-vue':footervue,
 }
+```
