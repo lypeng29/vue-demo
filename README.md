@@ -7,7 +7,7 @@ demo的git地址：https://www.github.com/lypeng29/vue-demo
 
 ## 本demo的体验运行流程
 
-*** 注：步骤三，任选一个执行 ***
+**注：步骤三，任选一个执行**
 
 1. git clone https://www.github.com/lypeng29/vue-demo
 2. npm install //安装所需包
@@ -17,7 +17,7 @@ demo的git地址：https://www.github.com/lypeng29/vue-demo
 
 ## 问题汇总
 
-1. 安装报错，操作不允许，没有权限
+#### 1. 安装报错，操作不允许，没有权限
 ```bash
 error stack: 'Error: EPERM: operation not permitted, rmdir \'E:\\www\\test\\vue-demo\\node_modules\\fsevents\\node_modules\'',
 error errno: -4048,
@@ -29,7 +29,7 @@ error Please try running this command again as root/Administrator.
 解决：给node_module文件夹，增加一个Everyone，拥有所有权限！如下图：
 
 
-2. 安装警告：fsevents跳过了
+#### 2. 安装警告：fsevents跳过了
 
 ```bash
 npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):
@@ -40,9 +40,9 @@ npm WARN vue-loader-demo@1.0.0 No repository field.
 
 解决说明：fsevent是mac osx系统的，在win或者Linux下使用了 所以会有警告，忽略即可。意思就是你已经安装成功了。
 
-### runtime-only build错误
+#### 3. runtime-only build错误
 
-3. 错误如下：
+错误如下：
 ```bash
 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.
 ```
@@ -53,11 +53,11 @@ resolve: {
     }
 },
 
-4. 关于Hot Module Replacement
+#### 4. 关于Hot Module Replacement
 运行npm run start后，成功打开localhost:5000，但页面是空的，提示：cannot GET /
 解决：在webpack配置中，output路径错了，应该是publicPath: '/'，而不是'./'
 
-5.template必须只有一个根节点，否则报错如下
+#### 5. template必须只有一个根节点，否则报错如下
 
 > Component template should contain exactly one root element. If you are using v-if on multiple elements, use v-else-if to chain them instead.
 
@@ -79,7 +79,7 @@ resolve: {
 </template>
 ```
 
-6.组件名必须和标签名一致
+#### 6. 组件名必须和标签名一致
 template写法：
 ```html
 <header-vue></header-vue>
@@ -95,3 +95,10 @@ components:{
 	'footer-vue':footervue,
 }
 ```
+
+#### 7. 不能使用sub,sup等HTML元素作为组件名称.
+`[Vue warn]: Do not use built-in or reserved HTML elements as component id: sub`
+
+用subvue代替sub
+
+

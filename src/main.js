@@ -1,5 +1,8 @@
 import Vue from 'vue'  
-import App from './index.vue'  
+// import App from './app.vue'  #基础demo，v-if v-for,v-on等等
+// import App from './list.vue'  #基础demo， 
+// import App from './index.vue'  
+import App from './parent.vue'  
 
 new Vue({   
     el: '#app',
